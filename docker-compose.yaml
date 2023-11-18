@@ -5,6 +5,8 @@ services:
   api:
     build: .
     restart: on-failure
+    depends_on:
+      - postgres
     ports:
       - "8080:8080"
     volumes:
@@ -21,3 +23,17 @@ services:
       - .docker/postgres:/data/postgres
     ports:
       - "5452:5452"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    volumes:
+      - .docker/pgadmin:/database/admin/pgadmin
+    ports:
+      - "5050:80"
