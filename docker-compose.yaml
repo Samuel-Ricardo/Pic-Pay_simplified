@@ -9,4 +9,15 @@ services:
       - "8080:8080"
     volumes:
       - .:/picpay
-  
+
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      PGDATA: /data/postgres
+    volumes:
+      - .docker/postgres:/data/postgres
+    ports:
+      - "5452:5452"
