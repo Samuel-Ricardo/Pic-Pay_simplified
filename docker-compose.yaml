@@ -22,7 +22,7 @@ services:
     volumes:
       - .docker/postgres:/data/postgres
     ports:
-      - "5452:5452"
+      - "5432:5432"
 
   pgadmin:
     image: dpage/pgadmin4
