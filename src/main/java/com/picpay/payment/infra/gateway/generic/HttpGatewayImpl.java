@@ -23,7 +23,7 @@ public class HttpGatewayImpl implements HttpGateway {
 
     @Override
     public ResponseEntity<Map> post(String URL, Object data) {
-        return null;
+        return client.postForEntity(URL, data, Map.class);
     }
 
     @Override
