@@ -27,4 +27,10 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserType userType;
 
+    static User from(UserDTO dto) {
+        var user = new User();
+        BeanUtils.copyProperties(dto, user);
+
+        return user;
+    }
 }
