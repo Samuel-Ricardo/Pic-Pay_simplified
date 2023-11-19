@@ -27,4 +27,14 @@ public class ControllerExceptionHandler {
                 ));
     }
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Object> handleGenericException(Exception exception) {
+        return ResponseEntity
+                .internalServerError()
+                .body(new ExceptionDTO(
+                        exception.getMessage(),
+                        "https://http.cat/status/500"
+                ));
+    }
+
 }
