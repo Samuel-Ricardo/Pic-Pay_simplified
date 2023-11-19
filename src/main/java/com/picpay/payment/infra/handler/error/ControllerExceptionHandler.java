@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ControllerExceptionHandler {
 
-    @ExceptionHandler({DataIntegrityViolationException.class)
+    @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<Object> handleDuplicateEntry(DataIntegrityViolationException exception) {
         var DTO = new ExceptionDTO("User alredy exists", "https://http.cat/status/409");
         return ResponseEntity.status(HttpStatus.CONFLICT).body(exception);
