@@ -1,7 +1,7 @@
 package com.picpay.payment.domain.gateways;
 
-import com.picpay.payment.domain.entities.user.User;
+import com.picpay.payment.domain.dto.notification.NotificationDTO;
 
 public interface NotificationGateway {
-    void sendNotification(User user, String message) throws Exception;
+    void sendNotification(NotificationDTO notification) throws Exception;
 }
