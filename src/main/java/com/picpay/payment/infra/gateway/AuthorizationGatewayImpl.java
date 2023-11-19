@@ -21,9 +21,9 @@ public class AuthorizationGatewayImpl implements AuthorizationGateway {
     private String URL;
 
     @Override
-    public String getAuthorization() throws Exception {
+    public String getAuthorization(){
         var response = client.get(URL);
-        if (response.getStatusCode() != HttpStatus.OK) throw new Exception("Error on get Authorization");
+        if (response.getStatusCode() != HttpStatus.OK) return "";
 
         return (String) Objects.requireNonNull(response.getBody()).get("message");
     }
