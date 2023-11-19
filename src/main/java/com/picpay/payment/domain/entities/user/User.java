@@ -1,15 +1,17 @@
 package com.picpay.payment.domain.entities.user;
 
 import com.picpay.payment.domain.dto.user.UserDTO;
-import com.picpay.payment.domain.entities.Model;
 import jakarta.persistence.*;
+import lombok.*;
 import org.springframework.beans.BeanUtils;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity(name = "tb_users") @Table(name = "tb_users")
-@Model
+@AllArgsConstructor @NoArgsConstructor
+@EqualsAndHashCode(of = "id")
+@Getter @Setter
 public class User {
 
     @Id
