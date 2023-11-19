@@ -11,14 +11,15 @@ services:
       - "8080:8080"
     volumes:
       - .:/picpay
+    env_file:
+      - .env
+      - .env.test
 
   postgres:
     image: postgres
     restart: always
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
-      PGDATA: /data/postgres
+    env_file:
+      - .env
     volumes:
       - .docker/postgres:/data/postgres
     ports:
@@ -29,10 +30,8 @@ services:
     restart: always
     depends_on:
       - postgres
-    environment:
-      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
-      PGADMIN_DEFAULT_PASSWORD: admin
-      PGADMIN_CONFIG_SERVER_MODE: "False"
+    env_file:
+      - .env
     volumes:
       - .docker/pgadmin:/database/admin/pgadmin
     ports:
