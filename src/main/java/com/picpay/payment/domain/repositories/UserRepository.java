@@ -8,5 +8,5 @@ import java.util.UUID;
 
 public interface UserRepository extends JpaRepository<User, UUID> {
     Optional<User> findUserByDocument(String document);
-    Optional<User> findUserById(Long id);
+    Optional<User> findUserById(UUID id);
 }
