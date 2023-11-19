@@ -5,16 +5,15 @@ import com.picpay.payment.domain.entities.user.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public interface UserService {
 
-    public User findUserById(Long id) throws Exception;
+    public User findUserById(UUID id) throws Exception;
 
-    public User createUser(UserDTO data);
+    public User saveUser(UserDTO data);
 
-    public List<User> getAllUsers();
-
-    public void saveUser(User user);
+    public List<User> findAllUsers();
 
 }
