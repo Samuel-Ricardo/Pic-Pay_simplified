@@ -6,7 +6,7 @@ import com.picpay.payment.domain.entities.user.User;
 import java.math.BigDecimal;
 
 public interface TransactionService {
-    boolean validate(User sender, BigDecimal amount);
+    boolean validate(User sender, BigDecimal amount) throws Exception;
 
     TransactionService createTransaction(TransactionDTO dto);
 }
