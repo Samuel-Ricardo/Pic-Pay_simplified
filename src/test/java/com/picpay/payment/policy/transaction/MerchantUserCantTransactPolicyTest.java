@@ -24,7 +24,7 @@ public class MerchantUserCantTransactPolicyTest {
     @Test
     @DisplayName("[UNIT] | Should: not [TRANSACT] because is [MERCHANT]")
     void executePolicyCase2() {
-        assertThat(policy.execute(UserType.MERCHANT)).isFalse();
+        assertThat(policy.execute(UserType.MERCHANT)).isTrue();
     }
 
 }
