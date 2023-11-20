@@ -20,6 +20,13 @@ public class CannotTransactWithoutSufficientBalancePolicyTest {
     @Autowired
     private CannotTransactWithoutSufficientBalancePolicy policy;
 
+    @Test
+    @DisplayName("[UNIT] | Should: [TRANSACT] because [sufficient balance]")
+    void executePolicyCase1(){
+        boolean result = policy.execute(VALID_COMON_USER, new BigDecimal(50));
+        Assertions.assertThat(result).isFalse();
+    }
+
 
 
 }
