@@ -16,11 +16,15 @@ public class MerchantUserCantTransactPolicyTest {
     private MerchantUserCantTransactPolicy policy;
 
     @Test
-    @DisplayName("[UNIT] | Should: [TRANSACT] because not [MERCHANT]")
+    @DisplayName("[UNIT] | Should: [TRANSACT] because not is [MERCHANT]")
     void executePolicyCase1() {
         assertThat(policy.execute(UserType.COMMON)).isFalse();
     }
 
-    
+    @Test
+    @DisplayName("[UNIT] | Should: not [TRANSACT] because is [MERCHANT]")
+    void executePolicyCase2() {
+        assertThat(policy.execute(UserType.MERCHANT)).isFalse();
+    }
 
 }
