@@ -2,6 +2,8 @@ package com.picpay.payment.data;
 
 import com.picpay.payment.domain.dto.user.UserDTO;
 import com.picpay.payment.domain.entities.user.User;
+import org.springframework.test.context.ActiveProfiles;
+
 import static com.picpay.payment.domain.entities.user.UserType.*;
 
 import java.math.BigDecimal;
@@ -9,6 +11,7 @@ import java.util.Random;
 import java.util.function.Function;
 import java.util.random.RandomGenerator;
 
+@ActiveProfiles("test")
 public class UserData {
 
     public static final UserDTO VALID_COMMON_USER_DATA = new UserDTO(
