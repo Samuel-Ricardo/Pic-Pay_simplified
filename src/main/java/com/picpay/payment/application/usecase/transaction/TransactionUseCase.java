@@ -1,7 +1,9 @@
 package com.picpay.payment.application.usecase.transaction;
 
 import com.picpay.payment.domain.entities.transaction.Transaction;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TransactionUseCase {
     public Transaction execute(Transaction transaction){
         var sender = transaction.getSender();
