@@ -63,5 +63,16 @@ public class UserServiceTest {
         verify(findById, times(1)).execute(VALID_COMON_USER.getId());
     }
 
-    
+    @Test
+    @DisplayName("[UNIT] | Should: find [all] => [USER]")
+    void findAll() throws Exception {
+        var expected = List.of(VALID_COMON_USER, VALID_MERCHANT_USER);
+
+        when(findAll.execute()).thenReturn(expected);
+
+        var result = service.findAllUsers();
+
+        assertTrue(result.containsAll(expected));
+        verify(findAll, times(1)).execute();
+    }
 }
