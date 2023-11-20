@@ -3,7 +3,7 @@ package com.picpay.payment.application.usecase.transaction;
 import com.picpay.payment.domain.entities.transaction.Transaction;
 
 public class TransactionUseCase {
-    Transaction execute(Transaction transaction){
+    public Transaction execute(Transaction transaction){
         var sender = transaction.getSender();
         var receiver = transaction.getReceiver();
 

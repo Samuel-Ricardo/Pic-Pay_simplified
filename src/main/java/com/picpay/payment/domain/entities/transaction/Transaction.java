@@ -3,6 +3,7 @@ package com.picpay.payment.domain.entities.transaction;
 import com.picpay.payment.domain.entities.user.User;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -24,5 +25,6 @@ public class Transaction {
     @ManyToOne
     @JoinColumn(name = "receiver_id")
     private User receiver;
+    @CreatedDate
     private LocalDateTime createdAt;
 }
