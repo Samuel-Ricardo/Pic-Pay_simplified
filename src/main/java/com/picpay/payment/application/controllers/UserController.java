@@ -18,6 +18,9 @@ public class UserController  {
     @Autowired
     private UserService service;
 
-    
+    @PostMapping
+    public ResponseEntity<User> create(@RequestBody UserDTO DTO) {
+        return new ResponseEntity<>(service.saveUser(DTO), CREATED);
+    }
 
 }
