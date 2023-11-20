@@ -5,6 +5,9 @@ import com.picpay.payment.domain.entities.user.User;
 import static com.picpay.payment.domain.entities.user.UserType.*;
 
 import java.math.BigDecimal;
+import java.util.Random;
+import java.util.function.Function;
+import java.util.random.RandomGenerator;
 
 public class UserData {
 
@@ -19,6 +22,22 @@ public class UserData {
             );
 
     public static final User VALID_COMON_USER = User.from(VALID_COMMON_USER_DATA);
+
+    public static UserDTO RANDOM_VALID_COMMON_USER_DATA() {
+        return new UserDTO(
+                Math.random()+"",
+                Math.random()+"",
+                Math.random()+"",
+                new BigDecimal(2000),
+                Math.random()+"@mail.com",
+                Math.random()+"",
+                COMMON
+        );
+    }
+
+    public static User RANDOM_VALID_COMMON_USER() {
+        return User.from(RANDOM_VALID_COMMON_USER_DATA());
+    }
 
     public static final UserDTO VALID_MERCHANT_USER_DATA = new UserDTO(
             "User2",
