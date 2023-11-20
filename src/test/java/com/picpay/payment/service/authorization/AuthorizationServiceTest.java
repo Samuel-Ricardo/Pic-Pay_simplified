@@ -3,6 +3,8 @@ package com.picpay.payment.service.authorization;
 import com.picpay.payment.application.usecase.authorization.IsAuthorizedUseCase;
 import static com.picpay.payment.data.UserData.*;
 import com.picpay.payment.domain.services.AuthorizationService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -26,11 +28,13 @@ public class AuthorizationServiceTest {
     @InjectMocks
     private AuthorizationService service;
 
-    void beforeEach() {
+    @BeforeEach
+    void setupMocks() {
         initMocks(this);
     }
 
     @Test
+    @DisplayName("[UNIT] | Should: verify if => is [AUTHORIZED]")
     void isAuthorized(){
 
         when(isAuthorized.execute()).thenReturn(true);
