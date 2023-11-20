@@ -51,5 +51,5 @@ public class UserServiceTest {
         assertEquals(VALID_COMON_USER, result);
     }
 
-
+    
 }
