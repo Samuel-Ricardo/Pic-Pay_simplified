@@ -1,5 +1,6 @@
 package com.picpay.payment.service.authorization;
 
+import com.picpay.payment.application.service.AuthorizationServiceImpl;
 import com.picpay.payment.application.usecase.authorization.IsAuthorizedUseCase;
 import static com.picpay.payment.data.UserData.*;
 import com.picpay.payment.domain.services.AuthorizationService;
@@ -26,11 +27,11 @@ public class AuthorizationServiceTest {
 
     @Autowired
     @InjectMocks
-    private AuthorizationService service;
+    private AuthorizationServiceImpl service;
 
     @BeforeEach
     void setupMocks() {
-        initMocks(this);
+        openMocks(this);
     }
 
     @Test

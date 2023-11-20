@@ -1,5 +1,6 @@
 package com.picpay.payment.service.notification;
 
+import com.picpay.payment.application.service.NotificationServiceImpl;
 import com.picpay.payment.application.usecase.notification.SendNotificationUseCase;
 import static com.picpay.payment.data.NotificationData.*;
 import com.picpay.payment.data.UserData;
@@ -25,11 +26,11 @@ public class NotificationServiceTest {
 
     @Autowired
     @InjectMocks
-    private NotificationService service;
+    private NotificationServiceImpl service;
 
     @BeforeEach
     void setup() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
