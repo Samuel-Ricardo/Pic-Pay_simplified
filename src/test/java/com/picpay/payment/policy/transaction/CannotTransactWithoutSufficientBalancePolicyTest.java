@@ -27,6 +27,11 @@ public class CannotTransactWithoutSufficientBalancePolicyTest {
         Assertions.assertThat(result).isFalse();
     }
 
-
+    @Test
+    @DisplayName("[UNIT] | Should: Not [TRANSACT] because [insufficient balance]")
+    void executePolicyCase2(){
+        boolean result = policy.execute(VALID_COMON_USER, new BigDecimal(5000));
+        Assertions.assertThat(result).isTrue();
+    }
 
 }
