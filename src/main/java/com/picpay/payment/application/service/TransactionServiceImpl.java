@@ -1,12 +1,17 @@
 package com.picpay.payment.application.service;
 
 import com.picpay.payment.application.policy.transaction.MerchantUserCantTransactPolicyImpl;
+import com.picpay.payment.application.usecase.transaction.SaveTransactionUseCase;
+import com.picpay.payment.application.usecase.transaction.TransactionUseCase;
 import com.picpay.payment.domain.dto.transaction.TransactionDTO;
+import com.picpay.payment.domain.entities.transaction.Transaction;
 import com.picpay.payment.domain.entities.user.User;
 import com.picpay.payment.domain.policy.transaction.CannotTransactWithoutSufficientBalancePolicy;
 import com.picpay.payment.domain.policy.transaction.MerchantUserCantTransactPolicy;
+import com.picpay.payment.domain.policy.transaction.SendNotificationOnTransactPolicy;
 import com.picpay.payment.domain.services.AuthorizationService;
 import com.picpay.payment.domain.services.TransactionService;
+import com.picpay.payment.domain.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +22,20 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Autowired
     private AuthorizationService authorizationService;
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private MerchantUserCantTransactPolicy merchantUserCantTransactPolicy;
     @Autowired
     private CannotTransactWithoutSufficientBalancePolicy cannotTransactWithoutSufficientBalancePolicy;
+    @Autowired
+    private SendNotificationOnTransactPolicy sendNotificationOnTransactPolicy;
 
+    @Autowired
+    private TransactionUseCase transct;
+    @Autowired
+    private SaveTransactionUseCase save;
 
     @Override
     public boolean validate(User sender, BigDecimal amount) throws Exception {
@@ -40,7 +53,26 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public TransactionService createTransaction(TransactionDTO dto) {
-        return null;
+    public Transaction transact(TransactionDTO dto) throws Exception {
+
+        var sender = userService.findUserById(dto.senderId());
+        this.validate(sender, dto.value());
+        var receiver = userService.findUserById(dto.receiverId());
+
+        var transaction = new Transaction();
+
+        transaction.setSender(sender);
+        transaction.setReceiver(receiver);
+        transaction.setAmount(dto.value());
+
+        transct.execute(transaction);
+        save.execute(transaction);
+
+        userService.saveUser(transaction.getSender());
+        userService.saveUser(transaction.getReceiver());
+
+        sendNotificationOnTransactPolicy.execute(transaction);
+
+        return transaction;
     }
 }
