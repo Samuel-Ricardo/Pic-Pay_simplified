@@ -34,6 +34,11 @@ public class UserRepositoryTest {
         assertThat(result.isPresent()).isTrue();
     }
 
-
+    @Test
+    @DisplayName("[UNIT] | Should: save => [USER]")
+    void saveUser() {
+        User result = this.repository.save(VALID_MERCHANT_USER);
+        assertThat(result.getId()).isNotNull();
+    }
 
 }
