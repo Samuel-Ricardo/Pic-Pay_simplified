@@ -14,6 +14,8 @@ public interface UserService {
 
     public User saveUser(UserDTO data);
 
+    public User saveUser(User data);
+
     public List<User> findAllUsers();
 
 }
