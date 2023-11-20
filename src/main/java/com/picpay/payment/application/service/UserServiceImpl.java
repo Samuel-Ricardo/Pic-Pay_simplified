@@ -33,6 +33,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User saveUser(User user) {
+        return save.execute(user);
+    }
+
+    @Override
     public List<User> findAllUsers() {
         return findAll.execute();
     }
