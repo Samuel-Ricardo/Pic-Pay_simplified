@@ -6,6 +6,10 @@ import com.picpay.payment.application.usecase.transaction.TransactionUseCase;
 import static com.picpay.payment.data.UserData.*;
 
 import static com.picpay.payment.data.TransactionData.*;
+
+import com.picpay.payment.data.TransactionData;
+import com.picpay.payment.domain.entities.transaction.Transaction;
+import com.picpay.payment.domain.entities.user.User;
 import com.picpay.payment.domain.policy.transaction.CannotTransactWithoutSufficientBalancePolicy;
 import com.picpay.payment.domain.policy.transaction.MerchantUserCantTransactPolicy;
 import com.picpay.payment.domain.policy.transaction.SendNotificationOnTransactPolicy;
@@ -25,6 +29,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @ActiveProfiles("test")
 @SpringBootTest
@@ -74,5 +79,56 @@ public class TransactionServiceTest {
 
         verify(authorizationService, times(1))
                 .isTransactionAuthorized(VALID_TRANSACTION.getSender(), value);
+    }
+
+    @Test
+    @DisplayName("[UNIT] | Should: execute => [TRANSACTION]")
+    void transact() throws Exception {
+
+        var value = new BigDecimal(100);
+
+        when(cannotTransactWithoutSufficientBalancePolicy.execute(any(User.class), eq(value)))
+                .thenReturn(false);
+        when(merchantUserCantTransactPolicy.execute(SENDER.getUserType()))
+                .thenReturn(false);
+        when(authorizationService.isTransactionAuthorized(any(SENDER.getClass()), eq(value)))
+                .thenReturn(true);
+
+
+        when(userService.findUserById(SENDER.getId()))
+                .thenReturn(SENDER);
+        when(userService.findUserById(RECEIVER.getId()))
+                .thenReturn(RECEIVER);
+
+
+        when(transct.execute(any(Transaction.class))).thenReturn(VALID_TRANSACTION);
+        when(save.execute(any(Transaction.class))).thenReturn(VALID_TRANSACTION);
+
+        when(userService.saveUser(any(User.class))).thenReturn(any(User.class));
+
+
+        var result = service.transact(VALID_TRANSACTION_DATA);
+        assertEquals(VALID_TRANSACTION.getId(), result.getId());
+
+
+        verify(cannotTransactWithoutSufficientBalancePolicy, times(1))
+                .execute(any(User.class), eq(value));
+        verify(merchantUserCantTransactPolicy, times(1))
+                .execute(SENDER.getUserType());
+        verify(authorizationService, times(1))
+                .isTransactionAuthorized(any(User.class), eq(value));
+
+
+        verify(userService, times(2)).findUserById(any(UUID.class));
+
+        verify(transct,times(1))
+                .execute(any(Transaction.class));
+        verify(save, times(1))
+                .execute(any(Transaction.class));
+
+        verify(userService,times(2)).saveUser(any(User.class));
+
+        verify(sendNotificationOnTransactPolicy, times(1))
+                .execute(any(Transaction.class));
     }
 }

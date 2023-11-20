@@ -65,8 +65,8 @@ public class TransactionServiceImpl implements TransactionService {
         transaction.setReceiver(receiver);
         transaction.setAmount(dto.value());
 
-        transct.execute(transaction);
-        save.execute(transaction);
+        transaction = transct.execute(transaction);
+        transaction = save.execute(transaction);
 
         userService.saveUser(transaction.getSender());
         userService.saveUser(transaction.getReceiver());

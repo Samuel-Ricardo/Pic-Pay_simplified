@@ -8,6 +8,7 @@ import static com.picpay.payment.domain.entities.user.UserType.*;
 
 import java.math.BigDecimal;
 import java.util.Random;
+import java.util.UUID;
 import java.util.function.Function;
 import java.util.random.RandomGenerator;
 
@@ -39,7 +40,9 @@ public class UserData {
     }
 
     public static User RANDOM_VALID_COMMON_USER() {
-        return User.from(RANDOM_VALID_COMMON_USER_DATA());
+        var user = User.from(RANDOM_VALID_COMMON_USER_DATA());
+        user.setId(UUID.randomUUID());
+        return user;
     }
 
     public static final UserDTO VALID_MERCHANT_USER_DATA = new UserDTO(
