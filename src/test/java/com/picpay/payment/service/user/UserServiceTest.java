@@ -51,5 +51,17 @@ public class UserServiceTest {
         assertEquals(VALID_COMON_USER, result);
     }
 
+    @Test
+    @DisplayName("[UNIT] | Should: find by [id] => [USER]")
+    void findById() throws Exception {
+        when(findById.execute(VALID_COMON_USER.getId()))
+                .thenReturn(VALID_COMON_USER);
+
+        var result = service.findUserById(VALID_COMON_USER.getId());
+
+        assertEquals(VALID_COMON_USER, result);
+        verify(findById, times(1)).execute(VALID_COMON_USER.getId());
+    }
+
     
 }
