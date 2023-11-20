@@ -24,6 +24,16 @@ public class UserRepositoryTest {
     @Autowired
     EntityManager entityManager;
 
+    @Test
+    @DisplayName("[UNIT] | Should: find by [document] => [USER]")
+    void findUserByDocument() {
+
+        this.entityManager.persist(VALID_COMON_USER);
+        Optional<User> result = this.repository.findUserByDocument("12345678901");
+
+        assertThat(result.isPresent()).isTrue();
+    }
+
 
 
 }
