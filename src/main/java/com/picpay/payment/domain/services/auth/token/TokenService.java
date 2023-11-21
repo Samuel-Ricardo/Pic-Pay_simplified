@@ -14,5 +14,5 @@ public interface TokenService {
     Optional<String> validate(String token);
     Optional<String> getDataFrom(String token);
     Optional<String> getFromHeader(HttpServletRequest request);
-    boolean shoudRequireToken(FilterChain filterChain, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+    boolean shoudRequireToken(Runnable ignore, HttpServletRequest request);
 }
