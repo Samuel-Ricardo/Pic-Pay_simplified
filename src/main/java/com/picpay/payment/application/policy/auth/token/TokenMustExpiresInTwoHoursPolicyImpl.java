@@ -17,6 +17,6 @@ public class TokenMustExpiresInTwoHoursPolicyImpl implements TokenMustExpireInTw
 
     @Override
     public Instant executeInBrazilOffset() {
-        return null;
+        return this.execute(ZoneOffset.of("-03:00"));
     }
 }
