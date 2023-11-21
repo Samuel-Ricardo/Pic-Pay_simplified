@@ -7,6 +7,7 @@ import com.picpay.payment.domain.entities.user.User;
 import com.picpay.payment.domain.policy.auth.NotRequireAuthInWhiteListPolicy;
 import com.picpay.payment.domain.policy.auth.token.TokenMustExpireInTwoHoursPolicy;
 import com.picpay.payment.domain.services.auth.token.TokenService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,12 +38,17 @@ public class JWTService implements TokenService {
     }
 
     @Override
-    public String validate(String token) {
+    public Optional<String> validate(String token) {
         return validateJWT.execute(token);
     }
 
     @Override
     public Optional<String> getDataFrom(String token) {
-        return Optional.empty();
+        return validateJWT.execute(token);
+    }
+
+    @Override
+    public Optional<String> getFromHeader(HttpServletRequest request) {
+        return getTokenFromHeader.execute(request);
     }
 }
