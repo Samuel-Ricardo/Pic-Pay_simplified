@@ -1,4 +1,4 @@
-package com.picpay.payment.infra.handler.error;
+package com.picpay.payment.infra.middleware.error;
 
 import com.picpay.payment.domain.dto.error.ExceptionDTO;
 import jakarta.persistence.EntityNotFoundException;
