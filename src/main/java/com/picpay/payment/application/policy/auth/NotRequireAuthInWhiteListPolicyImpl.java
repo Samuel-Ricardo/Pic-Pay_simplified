@@ -15,10 +15,9 @@ import java.util.Arrays;
 public class NotRequireAuthInWhiteListPolicyImpl implements NotRequireAuthInWhiteListPolicy {
     @Override
     public boolean execute(
-            FilterChain filterChain,
-            HttpServletRequest request,
-            HttpServletResponse response
-    ) throws ServletException, IOException {
+            Runnable ignore,
+            HttpServletRequest request
+    ) {
         var empty = Arrays
                 .stream(WHITE_LIST)
                 .filter( url ->
@@ -29,7 +28,7 @@ public class NotRequireAuthInWhiteListPolicyImpl implements NotRequireAuthInWhit
                 .toList()
                 .isEmpty();
 
-        if (empty) filterChain.doFilter(request, response);
+        if (empty) ignore.run();
         return empty;
     }
 }
