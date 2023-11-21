@@ -11,8 +11,7 @@ import java.util.Optional;
 
 public interface NotRequireAuthInWhiteListPolicy {
     boolean execute(
-            FilterChain filterChain,
-            HttpServletRequest request,
-            HttpServletResponse response
-    ) throws ServletException, IOException;
+            Runnable ignore,
+            HttpServletRequest request
+    );
 }
