@@ -38,7 +38,7 @@ public class JWTService implements TokenService {
 
     @Override
     public String validate(String token) {
-        return null;
+        return validateJWT.execute(token);
     }
 
     @Override
