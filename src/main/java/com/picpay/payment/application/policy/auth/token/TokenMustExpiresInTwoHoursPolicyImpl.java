@@ -4,6 +4,7 @@ import com.picpay.payment.domain.policy.auth.token.TokenMustExpireInTwoHoursPoli
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 @Component
@@ -11,7 +12,7 @@ public class TokenMustExpiresInTwoHoursPolicyImpl implements TokenMustExpireInTw
 
     @Override
     public Instant execute(ZoneOffset offset) {
-        return null;
+        return LocalDateTime.now().plusHours(2).toInstant(offset);
     }
 
     @Override
