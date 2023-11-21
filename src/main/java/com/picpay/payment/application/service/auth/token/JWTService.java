@@ -57,7 +57,7 @@ public class JWTService implements TokenService {
     }
 
     @Override
-    public boolean shoudRequireToken(FilterChain filterChain, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        return notRequireAuthInWhiteListPolicy.execute(filterChain, request, response);
+    public boolean shoudRequireToken(Runnable ignore, HttpServletRequest request) {
+        return !notRequireAuthInWhiteListPolicy.execute(ignore, request);
     }
 }
