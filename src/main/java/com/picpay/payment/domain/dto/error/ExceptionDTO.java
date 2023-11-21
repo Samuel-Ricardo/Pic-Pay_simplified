@@ -1,8 +1,10 @@
 package com.picpay.payment.domain.dto.error;
 
+import jakarta.validation.constraints.NotBlank;
+
 import java.util.Optional;
 
 public record ExceptionDTO(
-        String message,
-        String statusCode
+        @NotBlank String message,
+        @NotBlank String statusCode
 ) {}
