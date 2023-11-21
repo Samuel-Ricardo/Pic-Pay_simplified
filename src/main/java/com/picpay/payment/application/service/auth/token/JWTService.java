@@ -29,7 +29,11 @@ public class JWTService implements TokenService {
 
     @Override
     public String generateFor(User user) {
-        return null;
+        return generateJTW
+                .execute(
+                        user.getEmail(),
+                        tokenMustExpireInTwoHoursPolicy.executeInBrazilOffset()
+                );
     }
 
     @Override
