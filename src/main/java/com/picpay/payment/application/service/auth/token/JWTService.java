@@ -7,10 +7,14 @@ import com.picpay.payment.domain.entities.user.User;
 import com.picpay.payment.domain.policy.auth.NotRequireAuthInWhiteListPolicy;
 import com.picpay.payment.domain.policy.auth.token.TokenMustExpireInTwoHoursPolicy;
 import com.picpay.payment.domain.services.auth.token.TokenService;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.Optional;
 
 @Service
@@ -50,5 +54,10 @@ public class JWTService implements TokenService {
     @Override
     public Optional<String> getFromHeader(HttpServletRequest request) {
         return getTokenFromHeader.execute(request);
+    }
+
+    @Override
+    public boolean shoudRequireToken(FilterChain filterChain, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        return notRequireAuthInWhiteListPolicy.execute(filterChain, request, response);
     }
 }
