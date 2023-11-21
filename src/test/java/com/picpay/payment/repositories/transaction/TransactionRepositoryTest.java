@@ -1,4 +1,4 @@
-package com.picpay.payment.repositories.user;
+package com.picpay.payment.repositories.transaction;
 
 import com.picpay.payment.domain.entities.user.User;
 import com.picpay.payment.domain.repositories.TransactionRepository;
