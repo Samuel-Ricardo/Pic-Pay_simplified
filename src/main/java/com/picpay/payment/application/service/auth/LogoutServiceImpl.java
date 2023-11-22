@@ -14,9 +14,8 @@ public class LogoutServiceImpl implements LogoutService {
     @Autowired
     private AuthContextService context;
 
-
     @Override
     public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
-        context.
+        context.clearContext();
     }
 }
