@@ -12,6 +12,6 @@ import java.util.Optional;
 public interface NotRequireAuthInWhiteListPolicy {
     boolean execute(
             Runnable ignore,
-            HttpServletRequest request
+            String URL
     );
 }
