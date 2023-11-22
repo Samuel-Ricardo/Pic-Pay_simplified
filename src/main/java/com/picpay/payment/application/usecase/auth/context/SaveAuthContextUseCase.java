@@ -1,4 +1,4 @@
-package com.picpay.payment.application.usecase.auth;
+package com.picpay.payment.application.usecase.auth.context;
 
 import com.picpay.payment.domain.entities.user.User;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

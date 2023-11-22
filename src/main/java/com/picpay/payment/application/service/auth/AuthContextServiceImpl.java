@@ -1,11 +1,10 @@
 package com.picpay.payment.application.service.auth;
 
-import com.picpay.payment.application.usecase.auth.GetUserFromContextUseCase;
-import com.picpay.payment.application.usecase.auth.SaveAuthContextUseCase;
+import com.picpay.payment.application.usecase.auth.context.GetUserFromContextUseCase;
+import com.picpay.payment.application.usecase.auth.context.SaveAuthContextUseCase;
 import com.picpay.payment.domain.entities.user.User;
 import com.picpay.payment.domain.services.auth.AuthContextService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
