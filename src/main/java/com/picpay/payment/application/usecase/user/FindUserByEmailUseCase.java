@@ -12,7 +12,7 @@ public class FindUserByEmailUseCase {
 
     @Autowired private UserRepository repository;
 
-    Optional<User> execute(String email) {
+    public Optional<User> execute(String email) {
         return repository.findByEmail(email);
     }
 }
