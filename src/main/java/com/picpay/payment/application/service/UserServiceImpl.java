@@ -1,6 +1,7 @@
 package com.picpay.payment.application.service;
 
 import com.picpay.payment.application.usecase.user.FindAllUsersUseCase;
+import com.picpay.payment.application.usecase.user.FindUserByEmailUseCase;
 import com.picpay.payment.application.usecase.user.FindUserByIdUseCase;
 import com.picpay.payment.application.usecase.user.SaveUserUseCase;
 import com.picpay.payment.domain.dto.user.UserDTO;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -17,6 +19,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private FindUserByIdUseCase findById;
+    @Autowired
+    private FindUserByEmailUseCase findByEmail;
     @Autowired
     private FindAllUsersUseCase findAll;
     @Autowired
@@ -40,5 +44,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAllUsers() {
         return findAll.execute();
+    }
+
+    @Override
+    public Optional<User> findUserByEmail(String email) {
+        return findByEmail.execute(email);
     }
 }
