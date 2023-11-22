@@ -38,8 +38,6 @@ public class User implements UserDetails {
 
     @Enumerated
     private Role role;
-    @OneToMany(mappedBy = "user")
-    private List<Token> tokens;
 
 
     public static User from(UserDTO dto) {
