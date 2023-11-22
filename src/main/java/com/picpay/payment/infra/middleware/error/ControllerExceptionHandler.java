@@ -35,7 +35,7 @@ public class ControllerExceptionHandler {
         return ResponseEntity
                 .internalServerError()
                 .body(new ExceptionDTO(
-                        exception.toString(),
+                        exception.getMessage(),
                         "https://http.cat/status/500"
                 ));
     }
