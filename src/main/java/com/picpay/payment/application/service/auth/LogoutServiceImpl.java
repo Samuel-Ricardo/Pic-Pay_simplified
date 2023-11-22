@@ -17,6 +17,6 @@ public class LogoutServiceImpl implements LogoutService {
 
     @Override
     public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
-        
+        context.
     }
 }

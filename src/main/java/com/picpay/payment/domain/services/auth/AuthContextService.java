@@ -7,4 +7,6 @@ import java.util.Optional;
 public interface AuthContextService {
     void saveContext(User user);
     Optional<User> getUser();
+
+    void clearContext();
 }
