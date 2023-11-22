@@ -2,6 +2,8 @@ package com.picpay.payment.application.controllers.auth;
 
 import com.picpay.payment.domain.dto.auth.LoginDTO;
 import com.picpay.payment.domain.dto.auth.LoginResponseDTO;
+import com.picpay.payment.domain.dto.user.UserDTO;
+import com.picpay.payment.domain.entities.user.User;
 import com.picpay.payment.domain.services.auth.AuthenticationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,16 @@ public class AuthenticationController {
             @RequestBody
             @Valid LoginDTO DTO
         ) {
+        
         return ResponseEntity.ok(service.login(DTO));
+    }
+
+    public ResponseEntity<User> register(
+            @RequestBody
+            @Valid UserDTO DTO
+            ) throws Exception {
+
+        return ResponseEntity.ok(service.register(DTO));
     }
 
 }
