@@ -27,4 +27,9 @@ public class AuthContextServiceImpl implements AuthContextService {
     public Optional<User> getUser() {
         return get.execute();
     }
+
+    @Override
+    public void clearContext() {
+        SecurityContextHolder.clearContext();
+    }
 }
