@@ -10,21 +10,18 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.function.Function;
 
 @Component
 public class NotRequireAuthInWhiteListPolicyImpl implements NotRequireAuthInWhiteListPolicy {
     @Override
     public boolean execute(
             Runnable ignore,
-            HttpServletRequest request
+            String URL
     ) {
         var empty = Arrays
                 .stream(WHITE_LIST)
-                .filter( url ->
-                        request
-                                .getServletPath()
-                                .contains(url)
-                )
+                .filter(URL::contains)
                 .toList()
                 .isEmpty();
 
