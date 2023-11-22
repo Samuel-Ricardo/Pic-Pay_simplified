@@ -1,4 +1,4 @@
-package com.picpay.payment.infra.config;
+package com.picpay.payment.infra.config.security;
 
 import com.auth0.jwt.algorithms.Algorithm;
 import com.picpay.payment.infra.middleware.auth.jwt.JWTAuthMiddleware;
