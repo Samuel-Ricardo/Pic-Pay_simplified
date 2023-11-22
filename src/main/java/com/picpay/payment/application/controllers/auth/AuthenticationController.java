@@ -24,8 +24,7 @@ public class AuthenticationController {
     public ResponseEntity<LoginResponseDTO> login(
             @RequestBody
             @Valid LoginDTO DTO
-        ) {
-        
+        ) throws Exception {
         return ResponseEntity.ok(service.login(DTO));
     }
 
