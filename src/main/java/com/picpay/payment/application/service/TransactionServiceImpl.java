@@ -1,6 +1,7 @@
 package com.picpay.payment.application.service;
 
 import com.picpay.payment.application.policy.transaction.MerchantUserCantTransactPolicyImpl;
+import com.picpay.payment.application.usecase.transaction.FindAllTransactionsUseCase;
 import com.picpay.payment.application.usecase.transaction.SaveTransactionUseCase;
 import com.picpay.payment.application.usecase.transaction.TransactionUseCase;
 import com.picpay.payment.domain.dto.transaction.TransactionDTO;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class TransactionServiceImpl implements TransactionService {
@@ -36,6 +38,8 @@ public class TransactionServiceImpl implements TransactionService {
     private TransactionUseCase transct;
     @Autowired
     private SaveTransactionUseCase save;
+    @Autowired
+    private FindAllTransactionsUseCase findAllTransactions;
 
     @Override
     public boolean validate(User sender, BigDecimal amount) throws Exception {
@@ -74,5 +78,10 @@ public class TransactionServiceImpl implements TransactionService {
         sendNotificationOnTransactPolicy.execute(transaction);
 
         return transaction;
+    }
+
+    @Override
+    public List<Transaction> findAll() {
+        return findAllTransactions.execute();
     }
 }
