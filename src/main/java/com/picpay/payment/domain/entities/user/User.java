@@ -2,7 +2,6 @@ package com.picpay.payment.domain.entities.user;
 
 import com.picpay.payment.domain.dto.user.UserDTO;
 import com.picpay.payment.domain.entities.auth.Role;
-import com.picpay.payment.domain.entities.auth.Token;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.beans.BeanUtils;

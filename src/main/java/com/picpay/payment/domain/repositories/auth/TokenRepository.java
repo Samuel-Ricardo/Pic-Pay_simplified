@@ -1,6 +1,5 @@
 package com.picpay.payment.domain.repositories.auth;
 
-import com.picpay.payment.domain.entities.auth.Token;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
