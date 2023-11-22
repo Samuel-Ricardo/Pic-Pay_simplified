@@ -4,6 +4,7 @@ import com.picpay.payment.domain.dto.user.UserDTO;
 import com.picpay.payment.domain.entities.user.User;
 import org.springframework.test.context.ActiveProfiles;
 
+import static com.picpay.payment.domain.entities.auth.Role.*;
 import static com.picpay.payment.domain.entities.user.UserType.*;
 
 import java.math.BigDecimal;
@@ -22,7 +23,8 @@ public class UserData {
                 new BigDecimal(1000),
                 "common@mail.com",
                 "123456",
-                COMMON
+                COMMON,
+                USER
             );
 
     public static final User VALID_COMON_USER = User.from(VALID_COMMON_USER_DATA);
@@ -35,7 +37,8 @@ public class UserData {
                 new BigDecimal(2000),
                 Math.random()+"@mail.com",
                 Math.random()+"",
-                COMMON
+                COMMON,
+                USER
         );
     }
 
@@ -52,7 +55,8 @@ public class UserData {
             new BigDecimal(2000),
             "merchant@mail.com",
             "123456",
-            MERCHANT
+            MERCHANT,
+            USER
         );
 
     public static final User VALID_MERCHANT_USER = User.from(VALID_MERCHANT_USER_DATA);
