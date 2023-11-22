@@ -1,12 +1,15 @@
 package com.picpay.payment.infra.config.security;
 
-import com.auth0.jwt.algorithms.Algorithm;
+import com.picpay.payment.domain.entities.auth.Permissions;
+import static com.picpay.payment.domain.entities.auth.Permissions.*;
+
+import static com.picpay.payment.domain.entities.auth.Role.*;
 import com.picpay.payment.infra.middleware.auth.jwt.JWTAuthMiddleware;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
+
+import static org.springframework.http.HttpMethod.*;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,6 +22,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
+import java.util.Map;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -27,7 +32,7 @@ public class SecurityConfig {
 
     public static final String[] WHITE_LIST = {
             "/",
-            "/auth/**",
+            "/auth/login",
             "/v3/api-docs/**",
             "/api-docs.yaml",
             "/swagger-resources",
@@ -46,8 +51,12 @@ public class SecurityConfig {
         http.
                 csrf(AbstractHttpConfigurer::disable).
                 authorizeHttpRequests(req ->
-                        req.requestMatchers(WHITE_LIST)
-                                .permitAll()
+                        req
+                                .requestMatchers(WHITE_LIST).permitAll()
+                                .requestMatchers(GET, "/users").hasAnyRole(USER.name(), ADMIN.name())
+                                .requestMatchers(GET, "/transactions").hasAuthority(READ_TRANSACTION.getPermission())
+                                .requestMatchers(POST, "/auth/register").hasAuthority(CREATE_USER.getPermission())
+                                .requestMatchers(POST,"/transactions").hasAuthority(EXECUTE_TRANSACTION.getPermission())
                                 .anyRequest()
                                 .authenticated()
                 ).
