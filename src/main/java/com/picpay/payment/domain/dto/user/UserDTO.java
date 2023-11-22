@@ -1,5 +1,6 @@
 package com.picpay.payment.domain.dto.user;
 
+import com.picpay.payment.domain.entities.auth.Role;
 import com.picpay.payment.domain.entities.user.UserType;
 import jakarta.validation.constraints.NotBlank;
 
@@ -19,6 +20,8 @@ public record UserDTO(
         @NotBlank
         String password,
         @NotBlank
-        UserType userType
+        UserType userType,
+        @NotBlank
+        Role role
 ) {
 }
