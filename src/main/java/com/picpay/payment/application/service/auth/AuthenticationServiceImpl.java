@@ -33,7 +33,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public User register(UserDTO DTO) throws Exception {
 
-        if(userService.findUserByEmail(DTO.email()).isEmpty()) throw new Exception("User Already Exists");
+        if(userService.findUserByEmail(DTO.email()).isPresent()) throw new Exception("User Already Exists");
 
         var user = User.from(DTO);
         encryptPasswordBeforeRegisteringUserPolicy.execute(DTO.password(), user::setPassword);
