@@ -1,5 +1,6 @@
 package com.picpay.payment.application.service.auth;
 
+import com.picpay.payment.application.usecase.auth.GetUserFromContextUseCase;
 import com.picpay.payment.application.usecase.auth.SaveAuthContextUseCase;
 import com.picpay.payment.domain.entities.user.User;
 import com.picpay.payment.domain.services.auth.AuthContextService;
@@ -15,6 +16,7 @@ import java.util.Optional;
 public class AuthContextServiceImpl implements AuthContextService {
 
     private final SaveAuthContextUseCase save;
+    private final GetUserFromContextUseCase get;
 
     @Override
     public void saveContext(User user) {
@@ -23,6 +25,6 @@ public class AuthContextServiceImpl implements AuthContextService {
 
     @Override
     public Optional<User> getUser() {
-        
+        return get.execute();
     }
 }
