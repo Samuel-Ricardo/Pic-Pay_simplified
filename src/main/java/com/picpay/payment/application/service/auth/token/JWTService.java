@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Optional;
+import java.util.function.Function;
 
 @Service
 public class JWTService implements TokenService {
@@ -52,12 +53,12 @@ public class JWTService implements TokenService {
     }
 
     @Override
-    public Optional<String> getFromHeader(HttpServletRequest request) {
-        return getTokenFromHeader.execute(request);
+    public Optional<String> getFromHeader(Function<String, String> header) {
+        return getTokenFromHeader.execute(header);
     }
 
     @Override
-    public boolean shoudRequireToken(Runnable ignore, HttpServletRequest request) {
-        return !notRequireAuthInWhiteListPolicy.execute(ignore, request);
+    public boolean shoudRequireToken(Runnable ignore, String URLs) {
+        return !notRequireAuthInWhiteListPolicy.execute(ignore, URLs);
     }
 }
