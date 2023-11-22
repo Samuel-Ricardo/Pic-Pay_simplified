@@ -25,11 +25,9 @@ import org.springframework.security.web.authentication.logout.LogoutHandler;
 @EnableMethodSecurity
 public class SecurityConfig {
 
-    @Value("${app.security.token.secret}")
-    private String AUHT_TOKEN_SECRET;
-
     public static final String[] WHITE_LIST = {
-            "/api/v1/auth/**",
+            "/",
+            "/auth/**",
             "/v2/api-docs",
             "/v3/api-docs",
             "/v3/api-docs/**",
@@ -46,6 +44,7 @@ public class SecurityConfig {
     private final LogoutHandler logoutHandler;
     private final JWTAuthMiddleware JWT_MIDDLEWARE;
 
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.
                 csrf(AbstractHttpConfigurer::disable).
@@ -66,11 +65,4 @@ public class SecurityConfig {
         ;
         return http.build();
     }
-
-    @Bean
-    @Primary
-    public Algorithm algorithm() {
-        return Algorithm.HMAC256(AUHT_TOKEN_SECRET);
-    }
-
 }
