@@ -7,5 +7,5 @@ import com.picpay.payment.domain.entities.user.User;
 
 public interface AuthenticationService {
     LoginResponseDTO login(LoginDTO DTO);
-    User register(UserDTO DTO);
+    User register(UserDTO DTO) throws Exception;
 }
