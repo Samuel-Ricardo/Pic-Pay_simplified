@@ -8,11 +8,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.Optional;
+import java.util.function.Function;
 
 public interface TokenService {
     String generateFor(User user);
     Optional<String> validate(String token);
     Optional<String> getDataFrom(String token);
-    Optional<String> getFromHeader(HttpServletRequest request);
-    boolean shoudRequireToken(Runnable ignore, HttpServletRequest request);
+    Optional<String> getFromHeader(Function<String, String> header);
+    boolean shoudRequireToken(Runnable ignore, String URLs);
 }
