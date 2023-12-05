@@ -50,7 +50,8 @@
 
 <br>
 
-📡 | Hosted on Render: https://pic-pay.onrender.com/
+📡 | Hosted on Render: https://pic-pay.onrender.com/ <br>
+📝 | Documentation: https://pic-pay.onrender.com/swagger-ui/index.html
 
 <br>
 <br>
@@ -90,4 +91,37 @@
 
 <h2 id="app">
   💻 | Application:
+</h2>
+
+<img src="https://files.tecnoblog.net/wp-content/uploads/2022/01/pp-edited.jpg"/>
+
+<br>
+
+<p>
+  The API have a Authentication Systems that identify the registered user based on a JWT Token and a Authorization sistem that define what resources a authenticated usar can access, a <b>normal</b> user can't create others users, but a <b>admin</b> user can, for example. The User password are hashed with Bcrypt for better security.
+</p>
+
+<p>
+  Once time authenticated, a normal user can transact a value with others if have sufficient balance, it ask to for a external mocked microsservice if can realize transaction. All Domain Rules are encpsulateds in Policies that are implemented in Application Layer. after transaction are effectived with success the API consult other external mocked microsservice to send a notification for users informating that all goes right.
+<p>
+
+<p>
+  All data passed throug this microsservice have validation and a expected structure defined by DTO's and all Documentation are made with Swagger
+</p>
+
+<p>
+  In Test Ambience, i setup H2 for Database instead a dedicated PostgreSQL, because H2 use Memory that is very fast and how it is just a test and i dont need to keep data, i really want that the data base reset every time it restart, in other words, is more fast and discartable while emulate a real database comportament, is perfect for tests.
+</p>
+
+<p>
+  I use Docker to setup enviroment and run tests. This application have a image that are published on github at every commit on Main Branch automatizaded by Gihub actions
+</p>
+
+
+<br>
+
+#
+
+<h2 id="run-project"> 
+   👨‍💻 | How to use
 </h2>
