@@ -1,5 +1,3 @@
-# Pic-Pay_simplified
-
 <p align="center"> 
   <a href="https://spring.io/" target="_blank">
     <img width="80%" src="https://logodownload.org/wp-content/uploads/2018/05/picpay-logo.png"/>
@@ -45,3 +43,20 @@
 <p id="project"/>
 
 <h2> | 🛰️ About:  </h2>
+
+<p align="justfy">
+  This API is my implementation of the PicPay Technical Challenge [<a href="https://github.com/PicPay/picpay-desafio-backend" > repository </a>]. It simulate a microsservice for transactions with authentication & authorization. Was made following the best pratice of Clean Architeture and DDD, with Tests, Docker Containers and full Documentation with Swagger.
+</p>
+
+<br>
+
+📡 | Hosted on Render: https://pic-pay.onrender.com/
+
+<br>
+<br>
+
+<h2 id="techs">
+  🏗️ | Technologies and Concepts Studied:
+</h2>
+
+> <a href='https://spring.io/'> <img width="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" /> </a>
