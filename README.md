@@ -7,7 +7,7 @@
 <h4 align="center" >🚀 🟩 Pic Pay API 🟩 🚀</h4>
 
 <h4 align="center">
-  My implementation of <a href="https://picpay.com/" target="_blank" >@PicPay</a> Technical Challenge using Java & Spring Framework to create a little representation of PicPay API
+  My implementation of <a href="https://picpay.com/" target="_blank" >@PicPay</a> Technical Challenge using Java and Spring Framework to create a small representation of the PicPay API
 </h4>
 
 <p align="center">
@@ -45,7 +45,7 @@
 <h2> | 🛰️ About:  </h2>
 
 <p align="justfy">
-  This API is my implementation of the PicPay Technical Challenge [<a href="https://github.com/PicPay/picpay-desafio-backend" > repository </a>]. It simulate a microsservice for transactions with authentication & authorization. Was made following the best pratice of Clean Architeture and DDD, with Tests, Docker Containers and full Documentation with Swagger.
+  This API is my implementation of the PicPay Technical Challenge [<a href="https://github.com/PicPay/picpay-desafio-backend" > repository </a>]. Simulates a microservice for transactions with authentication and authorization. It was done following the best practices of Clean Architecture and DDD, with Tests, Docker Containers and complete Documentation with Swagger.
 </p>
 
 <br>
@@ -98,25 +98,29 @@
 <br>
 
 <p>
-  The API have a Authentication Systems that identify the registered user based on a JWT Token and a Authorization sistem that define what resources a authenticated usar can access, a <b>normal</b> user can't create others users, but a <b>admin</b> user can, for example. The User password are hashed with Bcrypt for better security.
+ The API has an Authentication System that identifies the registered user based on a JWT Token and an Authorization System that defines which resources an authenticated user can access, a <b>normal</b> user cannot create other users, but a <b>admin</b> user can, for example. User password is encrypt with Bcrypt for better security.
 </p>
 
 <p>
-  Once time authenticated, a normal user can transact a value with others if have sufficient balance, it ask to for a external mocked microsservice if can realize transaction. All Domain Rules are encpsulateds in Policies that are implemented in Application Layer. after transaction are effectived with success the API consult other external mocked microsservice to send a notification for users informating that all goes right.
+  Once authenticated, a normal user can transact an amount with others if they have enough balance, they will request an external simulated microservice to see if they can carry out the transaction. All Domain Rules are encapsulated in Policies that are implemented at the Application Layer. After the transaction is completed successfully, the API consults another external simulated microservice to send a notification to users informing them that everything went well.
 <p>
 
 <p>
-  All data passed throug this microsservice have validation and a expected structure defined by DTO's and all Documentation are made with Swagger
+  All data passed through this microservice has validation and expected structure defined by DTOs and all documentation is done with Swagger
 </p>
 
 <p>
-  In Test Ambience, i setup H2 for Database instead a dedicated PostgreSQL, because H2 use Memory that is very fast and how it is just a test and i dont need to keep data, i really want that the data base reset every time it restart, in other words, is more fast and discartable while emulate a real database comportament, is perfect for tests.
+  In the testing environment, I have configured H2 for Database instead of a dedicated PostgreSQL as H2 uses Memory which is very fast and since it is just a test and I don't need to save data, I actually want the database to be restarted when starting, that is, it is faster, disposable and emulates the real behavior of a database, it is perfect for testing.
 </p>
 
 <p>
-  I use Docker to setup enviroment and run tests. This application have a image that are published on github at every commit on Main Branch automatizaded by Gihub actions
+  I use Docker to set up the environment and run tests. This application has an image that is published on github with each commit in the Main Branch automated by Github actions
 </p>
 
+<br>
+
+📡 | Hosted on Render: https://pic-pay.onrender.com/ <br>
+📝 | Documentation: https://pic-pay.onrender.com/swagger-ui/index.html
 
 <br>
 
