@@ -56,7 +56,38 @@
 <br>
 
 <h2 id="techs">
-  🏗️ | Technologies and Concepts Studied:
+| 🏗️ - Technologies and Concepts Studied:
 </h2>
 
 > <a href='https://spring.io/'> <img width="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" /> </a>
+
+<br>
+
+- Spring Framework
+- Spring Security
+- JWT
+- Authentication & Authorization
+- PostgreSQL
+- Docker
+- Consume External API
+- Maven
+- REST
+- Swagger
+- Validation
+- Lombok
+- Environment
+- Clean Architeture
+- DDD
+- JUnit
+- H2 Database
+- Error Handler
+
+> Among Others...
+<br>
+
+
+#
+
+<h2 id="app">
+  💻 | Application:
+</h2>
