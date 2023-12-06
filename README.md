@@ -7,7 +7,7 @@
 <h4 align="center" >🚀 🟩 Pic Pay API 🟩 🚀</h4>
 
 <h4 align="center">
-  My implementation of <a href="https://picpay.com/" target="_blank" >@PicPay</a> Technical Challenge using Java and Spring Framework to create a small representation of the PicPay API
+  My implementation of <a href="https://picpay.com/" target="_blank" >@PicPay</a> using Java and Spring Framework to create a small representation of the PicPay API
 </h4>
 
 <p align="center">
@@ -45,7 +45,7 @@
 <h2> | 🛰️ About:  </h2>
 
 <p align="justfy">
-  This API is my implementation of the PicPay Technical Challenge [<a href="https://github.com/PicPay/picpay-desafio-backend" > repository </a>]. Simulates a microservice for transactions with authentication and authorization. It was done following the best practices of Clean Architecture and DDD, with Tests, Docker Containers and complete Documentation with Swagger.
+  This API is my implementation of the PicPay. Simulates a microservice for transactions with authentication and authorization. It was done following the best practices of Clean Architecture and DDD, with Tests, Docker Containers and complete Documentation with Swagger.
 </p>
 
 <br>
