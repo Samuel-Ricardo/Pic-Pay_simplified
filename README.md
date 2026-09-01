@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <b>Minimal, auditable clone of PicPay’s P2P wallet</b> — instant transfers with type-based rules, external authorization &amp; notification, JWT stateless auth, JPA persistence.<br/>
+  <b>Minimal, auditable clone of PicPay's P2P wallet</b> — instant transfers with type-based rules, external authorization & notification, JWT stateless auth, JPA persistence.<br/>
   <sub>Built against the official PicPay Backend Challenge · Interview-ready · Dockerized · Deep-documented</sub>
 </p>
 
@@ -45,6 +45,7 @@
 - [Troubleshooting](#-troubleshooting)
 - [Contributing](#-contributing)
 - [License](#-license)
+- [Hosted Demo](#-hosted-demo)
 
 ---
 
@@ -67,7 +68,7 @@
 
 ## 🎯 Why this project?
 
-**For** Brazilians needing instant P2P value movement, **who** are `COMMON` individuals or `MERCHANT` shops, **the PicPay Simplified** is a wallet ledger API **that** enforces type-based invariants (merchants cannot send, balance checked, external authorization, notification), **unlike** generic CRUD, **it** encodes PicPay’s core business rules as executable **policies**.
+**For** Brazilians needing instant P2P value movement, **who** are `COMMON` individuals or `MERCHANT` shops, **the PicPay Simplified** is a wallet ledger API **that** enforces type-based invariants (merchants cannot send, balance checked, external authorization, notification), **unlike** generic CRUD, **it** encodes PicPay's core business rules as executable **policies**.
 
 Out-of-scope by design (MVP): KYC, Pix, fees, limits, reversal, idempotency, multi-currency — see [Roadmap](#-roadmap--gaps).
 
@@ -465,6 +466,40 @@ See [docs/development.md](docs/development.md) for style (Lombok, MapStruct `fro
 | Code Quality | [docs/code-quality.md](docs/code-quality.md) |
 | Decisions (ADRs) | [docs/decisions.md](docs/decisions.md) |
 | **Interactive Diagrams** | [docs/diagrams/architecture.html](docs/diagrams/architecture.html) |
+
+---
+
+## 🌐 Hosted Demo
+
+📡 **Hosted on Render:** https://pic-pay.onrender.com/  
+📝 **Documentation (Swagger UI):** https://pic-pay.onrender.com/swagger-ui/index.html
+
+---
+
+## 👤 Author
+
+<p align="center">
+  <a href="https://www.linkedin.com/in/samuel-ricardo/" target="_blank">
+    <img width="120px" src="https://github.com/Samuel-Ricardo/bolao-da-copa/blob/main/readme_files/IMG_20220904_220148_188.jpg?raw=true"/>
+  </a>
+  <br>
+  <b>Samuel Ricardo</b>
+</p>
+
+<p align="center">
+  <a href="https://github.com/Samuel-Ricardo">
+    <img src="https://img.shields.io/static/v1?label=&message=Samuel%20Ricardo&color=black&style=for-the-badge&logo=GITHUB">
+  </a>
+  <a href="https://www.instagram.com/samuel_ricardo.ex/">
+    <img src="https://img.shields.io/static/v1?label=&message=Samuel.ex&color=black&style=for-the-badge&logo=instagram">
+  </a>
+  <a href="https://twitter.com/SamuelR84144340">
+    <img src="https://img.shields.io/static/v1?label=&message=Samuel%20Ricardo&color=black&style=for-the-badge&logo=twitter">
+  </a>
+  <a href="https://www.linkedin.com/in/samuel-ricardo/">
+    <img src="https://img.shields.io/static/v1?label=&message=Samuel%20Ricardo&color=black&style=for-the-badge&logo=LinkedIn">
+  </a>
+</p>
 
 ---
 
