@@ -1,6 +1,20 @@
 # PicPay Payment — Simplified Wallet API
 
 <p align="center">
+  <a href="https://spring.io/" target="_blank">
+    <img width="80%" src="https://logodownload.org/wp-content/uploads/2018/05/picpay-logo.png"/>
+  </a>
+</p>
+
+<h4 align="center" >🚀 🟩 Pic Pay API 🟩 🚀</h4>
+
+<p align="center">
+  My implementation of <a href="https://picpay.com/" target="_blank" >@PicPay</a> using Java and Spring Framework to create a small representation of the PicPay API
+</p>
+
+<br>
+
+<p align="center">
   <img alt="PicPay" src="https://img.shields.io/badge/PicPay-Simplified-21f190?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiI+PGNpcmNsZSBjeD0iOCIgY3k9IjgiIHI9IjgiIGZpbGw9IiMyMWYxOTAiLz48L3N2Zz4=" />
   <img alt="Java" src="https://img.shields.io/badge/Java-17-007396?style=flat-square&logo=openjdk&logoColor=white"/>
   <img alt="Spring Boot" src="https://img.shields.io/badge/Spring%20Boot-3.1.5-6DB33F?style=flat-square&logo=springboot&logoColor=white"/>
@@ -290,6 +304,26 @@ curl http://localhost:8080/v3/api-docs -H "Accept: application/json" | jq
 ```
 
 Swagger UI: `http://localhost:8080/swagger-ui/index.html` → [docs/api.md](docs/api.md) for screenshots & error table.
+
+---
+
+## 💻 Application Preview
+
+<p align="center">
+  <img src="https://files.tecnoblog.net/wp-content/uploads/2022/01/pp-edited.jpg"/>
+</p>
+
+<br>
+
+The API has an Authentication System that identifies the registered user based on a JWT Token and an Authorization System that defines which resources an authenticated user can access — a **normal** user cannot create other users, but an **admin** user can. User password is encrypted with BCrypt for better security.
+
+Once authenticated, a normal user can transact an amount with others if they have enough balance; they will request an external simulated microservice to see if they can carry out the transaction. All Domain Rules are encapsulated in **Policies** implemented at the Application Layer. After the transaction is completed successfully, the API consults another external simulated microservice to send a notification to users informing them that everything went well.
+
+All data passed through this microservice has validation and expected structure defined by DTOs and all documentation is done with Swagger.
+
+In the testing environment, H2 is configured for Database instead of a dedicated PostgreSQL — H2 uses memory which is very fast, and since it is just a test, the database restarts on startup (faster, disposable, emulates real behavior).
+
+Docker is used to set up the environment and run tests. The application image is published on GitHub with each commit to the Main Branch, automated by GitHub Actions.
 
 ---
 
